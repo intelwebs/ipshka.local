@@ -5,17 +5,18 @@ use yii\bootstrap\ActiveForm;
 ?>
 
 
-<div class="row">
-    <div class="col-lg-5">
-        <?php $form = ActiveForm::begin(['id' => 'company-form']); ?> <!--company - название модели, которая будет обрабатывать, в нашем случае CompanyForm.php-->
-        <?= $form->field($model, 'name') ?>
 
-        <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'company-button']) ?>
-        </div>
-        <?php ActiveForm::end(); ?>
+<div class="company-form">
+    <?php $form = ActiveForm::begin(['action' => Url::toRoute(['company/create'])]); ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+    <?php ActiveForm::end(); ?>
 </div>
+
+
+
 
 
 

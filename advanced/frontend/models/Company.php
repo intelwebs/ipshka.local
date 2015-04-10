@@ -12,17 +12,13 @@ use Yii;
  */
 class Company extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+
     public static function tableName()
     {
         return 'company';
     }
 
-    /**
-     * @inheritdoc
-     */
+
     public function rules()
     {
         return [
@@ -31,9 +27,7 @@ class Company extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
+
     public function attributeLabels()
     {
         return [
@@ -43,5 +37,15 @@ class Company extends \yii\db\ActiveRecord
     }
 
 
+
+    public function actionDetail($id)
+    {
+        $company = Company::findOne($id);
+
+        return $this->render('detail',
+            ['company' => $company]
+        );
+
+    }
 
 }

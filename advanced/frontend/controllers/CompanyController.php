@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use app\models\Company;
 
 class CompanyController extends \yii\web\Controller
@@ -12,9 +13,14 @@ class CompanyController extends \yii\web\Controller
             ->orderBy('name')
             ->all();
 
+
+        $model = new Company(); // Для добавления новых данных в базу
+
         return $this->render('index',
-            ['companies' => $companies]
+            ['companies' => $companies,
+                'model' => $model]
         );
+
     }
 
     public function actionDetail($id)
@@ -25,6 +31,20 @@ class CompanyController extends \yii\web\Controller
             ['company' => $company]
         );
 
+    }
+
+
+    public function actionCreate()
+    {
+        $model = new Company();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
 }

@@ -18,12 +18,7 @@ use yii\bootstrap\ActiveForm;
 
 
 
-
-
-
-
-
-<table>
+<table class="table table-striped">
     <?php
 
     foreach($companies as $company):?>

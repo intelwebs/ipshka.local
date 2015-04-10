@@ -43,11 +43,5 @@ class Company extends \yii\db\ActiveRecord
     }
 
 
-    // Связываем таблицы
-    public function getAccounts()
-    {
-        return $this->hasMany(Account::className(), ['company_id' => 'id']);
-    }
-
 
 }

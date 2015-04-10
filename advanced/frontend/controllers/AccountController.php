@@ -3,6 +3,8 @@
 namespace frontend\controllers;
 
 use app\models\Account;
+use app\models\AccountGood;
+
 //use app\models\Company;
 
 class AccountController extends \yii\web\Controller
@@ -20,13 +22,16 @@ class AccountController extends \yii\web\Controller
 
     public function actionDetail($id)
     {
-
         $account = Account::findOne($id);
-        $test = $account->getCompany->all();
-        var_dump($test);
+
+        $goods = AccountGood::find() // where account_id = $id
+                ->where(['account_id' => $id])
+            ->with('good')
+            ->all(); // with('good') - в выборку добавить данные из связанной таблицы good
 
         return $this->render('detail',
-            ['account' => $account]
+            ['account' => $account,
+            'goods' => $goods]
         );
 
     }

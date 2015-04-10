@@ -7,14 +7,6 @@
     </database-info>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <schema name="" catalog="ipshka"/>
-    <table name="acc_prod" schema="" catalog="ipshka" type="TABLE">
-      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="id_account" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="id_product" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="count" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <column name="price" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
-      <index name="id" unique="true" columns="id"/>
-    </table>
     <table name="account" schema="" catalog="ipshka" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
@@ -22,20 +14,28 @@
       <column name="company_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <index name="id" unique="true" columns="id"/>
     </table>
-    <table name="client" schema="" catalog="ipshka" type="TABLE">
+    <table name="account_good" schema="" catalog="ipshka" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="good_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="count" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="price" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="company" schema="" catalog="ipshka" type="TABLE">
       <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <index name="id" unique="true" columns="id"/>
+    </table>
+    <table name="good" schema="" catalog="ipshka" type="TABLE">
+      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <index name="id" unique="true" columns="id"/>
     </table>
     <table name="migration" schema="" catalog="ipshka" type="TABLE">
       <column name="version" sqlType="VARCHAR" precision="180" scale="0" nullable="false" jdbcType="12"/>
       <column name="apply_time" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="version"/>
-    </table>
-    <table name="product" schema="" catalog="ipshka" type="TABLE">
-      <column name="id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
-      <column name="name" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
-      <index name="id" unique="true" columns="id"/>
     </table>
     <table name="user" schema="" catalog="ipshka" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

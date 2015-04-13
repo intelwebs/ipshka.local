@@ -41,7 +41,7 @@ class CompanyController extends \yii\web\Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
+            return $this->render('index', [
                 'model' => $model,
             ]);
         }

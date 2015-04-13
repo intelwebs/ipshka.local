@@ -1,3 +1,9 @@
+<?php
+$this->title = $account->num;
+$this->params['breadcrumbs'][] = 'Счета';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 <h1>Счет № <?=$account->num?></h1>
 <p>Дата: <?=$account->date?></p>
 <p>Компания: <?=$account->company->name?> </p>

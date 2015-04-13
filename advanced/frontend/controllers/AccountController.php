@@ -13,6 +13,7 @@ class AccountController extends \yii\web\Controller
     {
         $accounts = Account::find()
             ->orderBy('date')
+            ->with('company')
             ->all();
 
         return $this->render('index',
@@ -24,10 +25,10 @@ class AccountController extends \yii\web\Controller
     {
         $account = Account::findOne($id);
 
-        $goods = AccountGood::find() // where account_id = $id
-                ->where(['account_id' => $id])
-            ->with('good')
-            ->all(); // with('good') - в выборку добавить данные из связанной таблицы good
+        $goods = AccountGood::find()
+                ->where(['account_id' => $id]) // where account_id = $id
+                ->with('good') // with('good') - в выборку добавить данные из связанной таблицы good
+                ->all();
 
         return $this->render('detail',
             ['account' => $account,
@@ -35,5 +36,7 @@ class AccountController extends \yii\web\Controller
         );
 
     }
+
+
 
 }
